@@ -59,7 +59,7 @@ class ArticleDigestService:
         )
         url_list = "\n".join(f"- {url}" for url in urls)
         response = await agent.run(
-            "以下の記事を取得して比較してください。各URLは文字列を変更せずToolへ渡してください。\n\n"
-            f"{url_list}"
+            "以下の技術記事を比較し、共通点、相違点、読む順番をまとめてください。\n\n"
+            f"対象URL:\n{url_list}"
         )
         return response.text.strip()

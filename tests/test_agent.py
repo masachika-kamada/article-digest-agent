@@ -61,7 +61,9 @@ async def test_digest_builds_agent_with_tool_and_exact_urls() -> None:
 
     assert report.startswith("# 技術記事ダイジェスト")
     assert all(url in client.agent.prompt for url in urls)
+    assert "共通点、相違点、読む順番" in client.agent.prompt
     assert client.agent_options["name"] == "ArticleDigestAgent"
+    assert "学習の優先順位" in client.agent_options["instructions"]  # type: ignore[operator]
     assert len(client.agent_options["tools"]) == 1  # type: ignore[arg-type]
 
 
