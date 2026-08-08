@@ -1,0 +1,52 @@
+[project]
+name = "article-digest-agent"
+version = "0.1.0"
+description = "Compare and digest technical articles with Microsoft Agent Framework"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Masachika Kamada", email = "63488322+masachika-kamada@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+keywords = ["agent-framework", "function-calling", "microsoft-foundry", "python"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "agent-framework-foundry>=1.10.4",
+    "agent-framework-openai>=1.12.0",
+    "azure-identity>=1.25.3",
+    "httpx>=0.28.1",
+    "pydantic-settings>=2.15.0",
+    "trafilatura>=2.2.0",
+]
+
+[project.scripts]
+article-digest-agent = "article_digest_agent:main"
+
+[build-system]
+requires = ["uv_build>=0.9.16,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "RUF", "SIM", "UP"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "respx>=0.23.1",
+    "ruff>=0.16.2",
+]
